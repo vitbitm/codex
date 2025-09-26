@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Spark — Тестирование ПО и веб-сайтов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="header">
+      <div class="logo">QA Spark</div>
+      <nav class="nav">
+        <a href="#about">О нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#process">Процесс</a>
+        <a href="#testimonials">Отзывы</a>
+        <a href="#contact" class="nav-cta">Связаться</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title"></h1>
+          <p class="hero-subtitle"></p>
+          <a class="hero-cta" target="_self"></a>
+        </div>
+        <div class="hero-visual">
+          <div class="orb"></div>
+          <div class="grid"></div>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="section-header">
+          <span class="section-tag">миссия</span>
+          <h2 class="section-title"></h2>
+        </div>
+        <p class="about-description"></p>
+      </section>
+
+      <section id="services" class="section services">
+        <div class="section-header">
+          <span class="section-tag">услуги</span>
+          <h2 class="section-title">Что мы тестируем</h2>
+        </div>
+        <div class="services-grid"></div>
+      </section>
+
+      <section id="process" class="section process">
+        <div class="section-header">
+          <span class="section-tag">процесс</span>
+          <h2 class="section-title">Как мы работаем</h2>
+        </div>
+        <div class="process-steps"></div>
+      </section>
+
+      <section id="testimonials" class="section testimonials">
+        <div class="section-header">
+          <span class="section-tag">отзывы</span>
+          <h2 class="section-title">Результаты клиентов</h2>
+        </div>
+        <div class="testimonials-list"></div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="section-header">
+          <span class="section-tag">контакты</span>
+          <h2 class="section-title"></h2>
+        </div>
+        <p class="contact-description"></p>
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:">
+            <span class="contact-label">Почта</span>
+            <span class="contact-value"></span>
+          </a>
+          <a class="contact-card" href="tel:">
+            <span class="contact-label">Телефон</span>
+            <span class="contact-value"></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> QA Spark. Мы проверим, прежде чем ваши пользователи заметят.</p>
+    </footer>
+
+    <script src="/script.js" type="module"></script>
+  </body>
+</html>
