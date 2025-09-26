@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Spark CMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <main class="cms">
+      <section class="panel panel-login" id="login-panel">
+        <h1>Вход в систему</h1>
+        <p class="muted">Введите пароль администратора, чтобы редактировать сайт.</p>
+        <form id="login-form">
+          <label>
+            Пароль
+            <input type="password" id="password" required />
+          </label>
+          <button type="submit" class="btn">Войти</button>
+          <p class="error" id="login-error"></p>
+        </form>
+      </section>
+
+      <section class="panel panel-editor hidden" id="editor-panel">
+        <header class="panel-header">
+          <div>
+            <h1>Контент сайта</h1>
+            <p class="muted">Редактируйте блоки. Сохранение моментально обновит главную страницу.</p>
+          </div>
+          <button id="logout" class="btn btn-outline">Выйти</button>
+        </header>
+
+        <form id="content-form" class="form-grid">
+          <fieldset>
+            <legend>Hero</legend>
+            <label>Заголовок <input type="text" name="hero.title" required /></label>
+            <label>Подзаголовок <textarea name="hero.subtitle" rows="3" required></textarea></label>
+            <label>CTA текст <input type="text" name="hero.ctaText" required /></label>
+            <label>CTA ссылка <input type="text" name="hero.ctaLink" required /></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>О компании</legend>
+            <label>Заголовок <input type="text" name="about.title" required /></label>
+            <label>Описание <textarea name="about.description" rows="4" required></textarea></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Услуги</legend>
+            <div id="services-container"></div>
+            <button type="button" class="btn btn-outline" id="add-service">Добавить услугу</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Процесс</legend>
+            <div id="process-container"></div>
+            <button type="button" class="btn btn-outline" id="add-process-step">Добавить шаг</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Отзывы</legend>
+            <div id="testimonials-container"></div>
+            <button type="button" class="btn btn-outline" id="add-testimonial">Добавить отзыв</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Контакты</legend>
+            <label>Заголовок <input type="text" name="contact.title" required /></label>
+            <label>Описание <textarea name="contact.description" rows="3" required></textarea></label>
+            <label>Email <input type="email" name="contact.email" required /></label>
+            <label>Телефон <input type="text" name="contact.phone" required /></label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Сохранить изменения</button>
+            <span class="status" id="save-status"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/admin.js" type="module"></script>
+  </body>
+</html>
