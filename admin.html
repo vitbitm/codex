@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление сайтом тестировщика</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main.admin {
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .panel {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .panel h2 {
+            margin-top: 0;
+        }
+
+        .panel + .panel {
+            margin-top: 32px;
+        }
+
+        .field-group {
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+
+        .list-editor {
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .list-item {
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            background: rgba(226, 231, 255, 0.35);
+        }
+
+        .list-item header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .list-item header h3 {
+            margin: 0;
+        }
+
+        .list-item button {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        .list-item label {
+            margin-bottom: 12px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 40px;
+        }
+
+        .notice {
+            padding: 16px 20px;
+            border-radius: 14px;
+            background: var(--accent-muted);
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 680px) {
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <nav class="top-nav">
+                <a class="logo" href="index.html">← Вернуться на сайт</a>
+            </nav>
+            <div class="hero-content">
+                <div>
+                    <span class="tag">Панель управления</span>
+                    <h1>Редактирование контента портфолио</h1>
+                    <p>Заполните блоки ниже, чтобы обновить информацию на сайте. Все изменения сохраняются в вашем браузере.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin">
+        <div class="container">
+            <div class="notice">Данные сохраняются в localStorage браузера и сразу отображаются на сайте.</div>
+            <form id="admin-form">
+                <section class="panel">
+                    <h2>Главный экран</h2>
+                    <div class="field-group">
+                        <label>
+                            Имя
+                            <input type="text" name="hero.name" required>
+                        </label>
+                        <label>
+                            Короткое представление
+                            <textarea name="hero.summary" required></textarea>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>Блок «Обо мне»</h2>
+                    <div class="field-group">
+                        <label>
+                            Описание
+                            <textarea name="about.text" required></textarea>
+                        </label>
+                        <div class="field-group">
+                            <label>
+                                Опыт (месяцы)
+                                <input type="text" name="about.achievements.experience" required>
+                            </label>
+                            <label>
+                                Тест-кейсы
+                                <input type="text" name="about.achievements.cases" required>
+                            </label>
+                            <label>
+                                Баги
+                                <input type="text" name="about.achievements.bugs" required>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>Навыки и инструменты</h2>
+                    <div class="list-editor" id="skills-editor"></div>
+                    <button type="button" class="btn secondary" id="add-skill">Добавить навык</button>
+                </section>
+
+                <section class="panel">
+                    <h2>Проекты</h2>
+                    <label>
+                        Вступление
+                        <textarea name="projects.intro" required></textarea>
+                    </label>
+                    <div class="list-editor" id="projects-editor"></div>
+                    <button type="button" class="btn secondary" id="add-project">Добавить проект</button>
+                </section>
+
+                <section class="panel">
+                    <h2>Отзывы</h2>
+                    <div class="list-editor" id="testimonials-editor"></div>
+                    <button type="button" class="btn secondary" id="add-testimonial">Добавить отзыв</button>
+                </section>
+
+                <section class="panel">
+                    <h2>Контакты</h2>
+                    <div class="field-group">
+                        <label>
+                            Email
+                            <input type="email" name="contacts.email" required>
+                        </label>
+                        <label>
+                            Telegram (ссылка)
+                            <input type="url" name="contacts.telegram" required>
+                        </label>
+                        <label>
+                            Подпись Telegram
+                            <input type="text" name="contacts.telegramLabel" required>
+                        </label>
+                        <label>
+                            LinkedIn (ссылка)
+                            <input type="url" name="contacts.linkedin" required>
+                        </label>
+                        <label>
+                            Подпись LinkedIn
+                            <input type="text" name="contacts.linkedinLabel" required>
+                        </label>
+                        <label>
+                            Имя в подвале
+                            <input type="text" name="footerName" required>
+                        </label>
+                    </div>
+                </section>
+
+                <div class="actions">
+                    <button type="button" class="btn secondary" id="reset-btn">Сбросить к исходным данным</button>
+                    <button type="submit" class="btn primary">Сохранить изменения</button>
+                </div>
+                <p class="form-status" id="save-status" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('admin-form');
+        const saveStatus = document.getElementById('save-status');
+
+        function setFormValues(data) {
+            form.querySelector('[name="hero.name"]').value = data.hero.name;
+            form.querySelector('[name="hero.summary"]').value = data.hero.summary;
+            form.querySelector('[name="about.text"]').value = data.about.text;
+            form.querySelector('[name="about.achievements.experience"]').value = data.about.achievements.experience;
+            form.querySelector('[name="about.achievements.cases"]').value = data.about.achievements.cases;
+            form.querySelector('[name="about.achievements.bugs"]').value = data.about.achievements.bugs;
+            form.querySelector('[name="projects.intro"]').value = data.projects.intro;
+            form.querySelector('[name="contacts.email"]').value = data.contacts.email;
+            form.querySelector('[name="contacts.telegram"]').value = data.contacts.telegram;
+            form.querySelector('[name="contacts.telegramLabel"]').value = data.contacts.telegramLabel;
+            form.querySelector('[name="contacts.linkedin"]').value = data.contacts.linkedin;
+            form.querySelector('[name="contacts.linkedinLabel"]').value = data.contacts.linkedinLabel;
+            form.querySelector('[name="footerName"]').value = data.footerName;
+        }
+
+        function renderListEditor(container, items, template) {
+            container.innerHTML = '';
+            items.forEach((item, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'list-item';
+                wrapper.innerHTML = template(item, index);
+                container.appendChild(wrapper);
+            });
+        }
+
+        const skillsEditor = document.getElementById('skills-editor');
+        const projectsEditor = document.getElementById('projects-editor');
+        const testimonialsEditor = document.getElementById('testimonials-editor');
+
+        function renderSkills(skills) {
+            renderListEditor(skillsEditor, skills, (skill, index) => `
+                <header>
+                    <h3>Навык ${index + 1}</h3>
+                    <button type="button" class="btn secondary" data-remove-skill="${index}">Удалить</button>
+                </header>
+                <label>
+                    Заголовок
+                    <input type="text" name="skills.${index}.title" value="${skill.title}" required>
+                </label>
+                <label>
+                    Описание
+                    <textarea name="skills.${index}.description" required>${skill.description}</textarea>
+                </label>
+            `);
+        }
+
+        function renderProjects(projects) {
+            renderListEditor(projectsEditor, projects, (project, index) => `
+                <header>
+                    <h3>Проект ${index + 1}</h3>
+                    <button type="button" class="btn secondary" data-remove-project="${index}">Удалить</button>
+                </header>
+                <label>
+                    Тип
+                    <input type="text" name="projects.items.${index}.type" value="${project.type}" required>
+                </label>
+                <label>
+                    Название
+                    <input type="text" name="projects.items.${index}.title" value="${project.title}" required>
+                </label>
+                <label>
+                    Описание
+                    <textarea name="projects.items.${index}.description" required>${project.description}</textarea>
+                </label>
+                <label>
+                    Ссылка
+                    <input type="url" name="projects.items.${index}.link" value="${project.link || ''}">
+                </label>
+                <label>
+                    Подпись ссылки
+                    <input type="text" name="projects.items.${index}.linkLabel" value="${project.linkLabel || ''}">
+                </label>
+            `);
+        }
+
+        function renderTestimonials(testimonials) {
+            renderListEditor(testimonialsEditor, testimonials, (testimonial, index) => `
+                <header>
+                    <h3>Отзыв ${index + 1}</h3>
+                    <button type="button" class="btn secondary" data-remove-testimonial="${index}">Удалить</button>
+                </header>
+                <label>
+                    Цитата
+                    <textarea name="testimonials.${index}.quote" required>${testimonial.quote}</textarea>
+                </label>
+                <label>
+                    Автор
+                    <input type="text" name="testimonials.${index}.author" value="${testimonial.author}" required>
+                </label>
+            `);
+        }
+
+        function getDataFromForm() {
+            const formData = new FormData(form);
+            const updated = JSON.parse(JSON.stringify(loadData()));
+
+            updated.hero.name = formData.get('hero.name');
+            updated.hero.summary = formData.get('hero.summary');
+            updated.about.text = formData.get('about.text');
+            updated.about.achievements.experience = formData.get('about.achievements.experience');
+            updated.about.achievements.cases = formData.get('about.achievements.cases');
+            updated.about.achievements.bugs = formData.get('about.achievements.bugs');
+            updated.projects.intro = formData.get('projects.intro');
+            updated.contacts.email = formData.get('contacts.email');
+            updated.contacts.telegram = formData.get('contacts.telegram');
+            updated.contacts.telegramLabel = formData.get('contacts.telegramLabel');
+            updated.contacts.linkedin = formData.get('contacts.linkedin');
+            updated.contacts.linkedinLabel = formData.get('contacts.linkedinLabel');
+            updated.footerName = formData.get('footerName');
+
+            updated.skills = updated.skills.map((skill, index) => ({
+                title: formData.get(`skills.${index}.title`),
+                description: formData.get(`skills.${index}.description`)
+            }));
+
+            updated.projects.items = updated.projects.items.map((project, index) => ({
+                type: formData.get(`projects.items.${index}.type`),
+                title: formData.get(`projects.items.${index}.title`),
+                description: formData.get(`projects.items.${index}.description`),
+                link: formData.get(`projects.items.${index}.link`),
+                linkLabel: formData.get(`projects.items.${index}.linkLabel`)
+            }));
+
+            updated.testimonials = updated.testimonials.map((testimonial, index) => ({
+                quote: formData.get(`testimonials.${index}.quote`),
+                author: formData.get(`testimonials.${index}.author`)
+            }));
+
+            return updated;
+        }
+
+        function saveData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            populatePage(data);
+            saveStatus.textContent = 'Изменения сохранены! Откройте главную страницу, чтобы увидеть результат.';
+        }
+
+        function addSkill() {
+            const data = loadData();
+            data.skills.push({ title: 'Новый навык', description: 'Опишите компетенцию.' });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            renderSkills(data.skills);
+        }
+
+        function addProject() {
+            const data = loadData();
+            data.projects.items.push({
+                type: 'Новый тип',
+                title: 'Название проекта',
+                description: 'Опишите задачи и достижения.',
+                link: '',
+                linkLabel: ''
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            renderProjects(data.projects.items);
+        }
+
+        function addTestimonial() {
+            const data = loadData();
+            data.testimonials.push({ quote: 'Новый отзыв', author: 'Автор' });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            renderTestimonials(data.testimonials);
+        }
+
+        function resetData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultData));
+            initializeAdmin();
+            saveStatus.textContent = 'Данные сброшены к исходным.';
+        }
+
+        function initializeAdmin() {
+            const data = loadData();
+            setFormValues(data);
+            renderSkills(data.skills);
+            renderProjects(data.projects.items);
+            renderTestimonials(data.testimonials);
+        }
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            const data = getDataFromForm();
+            saveData(data);
+        });
+
+        document.getElementById('add-skill').addEventListener('click', addSkill);
+        document.getElementById('add-project').addEventListener('click', addProject);
+        document.getElementById('add-testimonial').addEventListener('click', addTestimonial);
+        document.getElementById('reset-btn').addEventListener('click', resetData);
+
+        skillsEditor.addEventListener('click', event => {
+            const button = event.target.closest('[data-remove-skill]');
+            if (button) {
+                const index = Number(button.dataset.removeSkill);
+                const data = loadData();
+                data.skills.splice(index, 1);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                renderSkills(data.skills);
+            }
+        });
+
+        projectsEditor.addEventListener('click', event => {
+            const button = event.target.closest('[data-remove-project]');
+            if (button) {
+                const index = Number(button.dataset.removeProject);
+                const data = loadData();
+                data.projects.items.splice(index, 1);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                renderProjects(data.projects.items);
+            }
+        });
+
+        testimonialsEditor.addEventListener('click', event => {
+            const button = event.target.closest('[data-remove-testimonial]');
+            if (button) {
+                const index = Number(button.dataset.removeTestimonial);
+                const data = loadData();
+                data.testimonials.splice(index, 1);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                renderTestimonials(data.testimonials);
+            }
+        });
+
+        initializeAdmin();
+    </script>
+</body>
+</html>

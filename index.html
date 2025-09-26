@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио тестировщика</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <nav class="top-nav">
+                <a class="logo" href="#">QA Start</a>
+                <ul class="nav-links">
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#projects">Проекты</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <div>
+                    <span class="tag">Мануальный и начинающий автоматизатор</span>
+                    <h1>Привет! Я <span id="hero-name">Анна Иванова</span>, начинающий тестировщик</h1>
+                    <p id="hero-summary">Помогаю командам выпускать качественные продукты: ищу ошибки, улучшаю процессы и говорю на языке разработчиков и пользователей.</p>
+                    <div class="hero-cta">
+                        <a class="btn primary" href="#projects">Посмотреть проекты</a>
+                        <a class="btn secondary" href="admin.html">Редактировать сайт</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <img src="https://images.unsplash.com/photo-1587613864521-79b1e0bcea06?auto=format&fit=crop&w=800&q=80" alt="Рабочее место тестировщика">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section light" id="about">
+            <div class="container split">
+                <div>
+                    <h2>Обо мне</h2>
+                    <p id="about-text">Начинающий QA-специалист с вниманием к деталям и любовью к аналитике. Имею опыт тестирования веб-приложений, написания тест-кейсов и работы с баг-трекинговыми системами. В свободное время изучаю автоматизацию на JavaScript и участвую в QA-сообществах.</p>
+                </div>
+                <ul class="about-stats" id="achievements-list">
+                    <li>
+                        <span class="number" data-field="experience">6</span>
+                        <span class="label">месяцев опыта</span>
+                    </li>
+                    <li>
+                        <span class="number" data-field="cases">120+</span>
+                        <span class="label">тест-кейсов написано</span>
+                    </li>
+                    <li>
+                        <span class="number" data-field="bugs">80</span>
+                        <span class="label">багов найдено</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <h2>Навыки и инструменты</h2>
+                <div class="skills-grid" id="skills-list">
+                    <article class="skill-card">
+                        <h3>Тестовая документация</h3>
+                        <p>Чек-листы, тест-кейсы, тест-планы, матрицы трассировки.</p>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Инструменты</h3>
+                        <p>Jira, TestRail, Confluence, Postman, Chrome DevTools.</p>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Методологии</h3>
+                        <p>Agile, Scrum, Kanban, гибкое взаимодействие с командой.</p>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Автоматизация</h3>
+                        <p>Основы JavaScript, написание автотестов на Playwright.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section light" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Проекты и учебные кейсы</h2>
+                    <p id="projects-intro">Подборка задач, над которыми я работала во время обучения и стажировок.</p>
+                </div>
+                <div class="projects-grid" id="projects-list">
+                    <article class="project-card">
+                        <span class="project-type">Web / Ручное тестирование</span>
+                        <h3>Интернет-магазин одежды</h3>
+                        <p>Создала тестовую документацию, провела функциональное и регрессионное тестирование, подготовила отчёт по найденным дефектам.</p>
+                        <a class="project-link" href="#">Просмотреть тест-кейсы</a>
+                    </article>
+                    <article class="project-card">
+                        <span class="project-type">API</span>
+                        <h3>Сервис бронирования отелей</h3>
+                        <p>Проанализировала REST API, разработала коллекцию Postman, автоматизировала позитивные и негативные сценарии.</p>
+                        <a class="project-link" href="#">Коллекция Postman</a>
+                    </article>
+                    <article class="project-card">
+                        <span class="project-type">Автоматизация</span>
+                        <h3>Личный кабинет банка</h3>
+                        <p>Написала автотесты на авторизацию и перевод средств, настроила запуск в GitHub Actions.</p>
+                        <a class="project-link" href="#">Репозиторий GitHub</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Отзывы наставников</h2>
+                    <p>Несколько слов от людей, с которыми мы работали вместе.</p>
+                </div>
+                <div class="testimonials-grid" id="testimonials-list">
+                    <article class="testimonial-card">
+                        <p>«Анна быстро вникает в процессы, грамотно оформляет документацию и всегда доводит задачи до результата.»</p>
+                        <span class="author">Екатерина Петрова, тимлид QA</span>
+                    </article>
+                    <article class="testimonial-card">
+                        <p>«Проявляет инициативу и не боится предлагать улучшения. Отлично работает с баг-репортами.»</p>
+                        <span class="author">Дмитрий Смирнов, наставник курса</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section light" id="contacts">
+            <div class="container contact">
+                <div>
+                    <h2>Контакты</h2>
+                    <p>Готова к стажировкам и предложениям на позицию Junior QA. Свяжитесь удобным способом.</p>
+                    <ul class="contact-list" id="contact-list">
+                        <li>
+                            <span class="contact-label">Email</span>
+                            <a id="contact-email" href="mailto:anna.qa@example.com">anna.qa@example.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">Telegram</span>
+                            <a id="contact-telegram" href="https://t.me/anna_qa">@anna_qa</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">LinkedIn</span>
+                            <a id="contact-linkedin" href="https://linkedin.com/in/anna-qa">linkedin.com/in/anna-qa</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <h3>Свяжитесь со мной</h3>
+                    <label>
+                        Ваше имя
+                        <input type="text" name="name" placeholder="Имя" required>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="name@example.com" required>
+                    </label>
+                    <label>
+                        Сообщение
+                        <textarea name="message" rows="4" placeholder="Расскажите о проекте" required></textarea>
+                    </label>
+                    <button type="submit" class="btn primary">Отправить</button>
+                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© <span id="footer-year"></span> <span id="footer-name">Анна Иванова</span>. Все права защищены.</p>
+            <a class="back-to-top" href="#top">Наверх ↑</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
