@@ -1,0 +1,13 @@
+{
+  "name": "codex",
+  "version": "1.0.0",
+  "description": "Nebula QA Studio — портфолио студии тестирования с админ-панелью",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
