@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automated Web Testing Suite</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Automated Web Testing Suite</h1>
+            <p>Запустите комплексное тестирование сайта: введите домен, выберите необходимые сценарии и позвольте системе сделать всё за вас.</p>
+        </header>
+
+        <section class="card">
+            <form id="testForm">
+                <label for="domain">Домен сайта</label>
+                <input type="text" id="domain" name="domain" placeholder="example.com" required />
+
+                <fieldset>
+                    <legend>Виды тестирования</legend>
+                    <div id="testOptions" class="grid"></div>
+                </fieldset>
+
+                <button type="submit">Запустить тестирование</button>
+            </form>
+        </section>
+
+        <section class="card" id="statusPanel" hidden>
+            <h2>Статус прогона</h2>
+            <div id="runInfo"></div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div id="results"></div>
+        </section>
+    </main>
+
+    <template id="resultTemplate">
+        <article class="result">
+            <header>
+                <h3></h3>
+                <span class="badge"></span>
+            </header>
+            <p class="summary"></p>
+            <dl class="details"></dl>
+        </article>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
