@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinery | QA студия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Tinery.</div>
+    <nav class="nav">
+      <a href="#services" data-content-key="nav.services"></a>
+      <a href="#cases" data-content-key="nav.cases"></a>
+      <a href="#contact" data-content-key="nav.contact"></a>
+    </nav>
+    <div class="actions">
+      <div class="lang-switch" aria-label="Language switch">
+        <button data-lang="ru" class="lang-btn">RU</button>
+        <button data-lang="en" class="lang-btn">EN</button>
+      </div>
+      <button class="secondary" id="adminToggle" type="button" data-content-key="buttons.admin"></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow" data-content-key="hero.eyebrow"></p>
+        <h1 id="hero-title" data-content-key="hero.title"></h1>
+        <p class="lede" data-content-key="hero.subtitle"></p>
+        <div class="cta">
+          <button class="primary" data-content-key="hero.cta"></button>
+          <p class="support" data-content-key="hero.support"></p>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-title" data-content-key="card.title"></div>
+        <p class="card-body" data-content-key="card.body"></p>
+        <div class="pill" data-content-key="card.pill"></div>
+      </div>
+    </section>
+
+    <section class="grid" id="services">
+      <div class="section-header">
+        <p class="eyebrow" data-content-key="services.eyebrow"></p>
+        <h2 data-content-key="services.title"></h2>
+        <p class="body" data-content-key="services.desc"></p>
+      </div>
+      <div class="tiles" id="serviceTiles"></div>
+    </section>
+
+    <section class="grid" id="cases">
+      <div class="section-header">
+        <p class="eyebrow" data-content-key="cases.eyebrow"></p>
+        <h2 data-content-key="cases.title"></h2>
+        <p class="body" data-content-key="cases.desc"></p>
+      </div>
+      <div class="case-board" id="caseBoard"></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div>
+        <p class="eyebrow" data-content-key="contact.eyebrow"></p>
+        <h2 data-content-key="contact.title"></h2>
+        <p class="body" data-content-key="contact.desc"></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-point">
+          <span class="label" data-content-key="contact.emailLabel"></span>
+          <a href="mailto:hello@tinery.qa" id="emailLink">hello@tinery.qa</a>
+        </div>
+        <div class="contact-point">
+          <span class="label" data-content-key="contact.phoneLabel"></span>
+          <a href="tel:+79998887766" id="phoneLink">+7 (999) 888-77-66</a>
+        </div>
+        <div class="contact-point">
+          <span class="label" data-content-key="contact.chatLabel"></span>
+          <span class="value" data-content-key="contact.chatValue"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="admin" id="adminPanel" aria-hidden="true">
+    <div class="admin-header">
+      <div>
+        <p class="eyebrow" data-content-key="admin.eyebrow"></p>
+        <h3 data-content-key="admin.title"></h3>
+      </div>
+      <button class="icon" id="adminClose" aria-label="Close">×</button>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-row">
+        <label for="adminLanguage" data-content-key="admin.language"></label>
+        <select id="adminLanguage"></select>
+      </div>
+      <div class="admin-row">
+        <label for="heroTitleInput" data-content-key="admin.heroTitle"></label>
+        <input type="text" id="heroTitleInput" />
+      </div>
+      <div class="admin-row">
+        <label for="heroSubtitleInput" data-content-key="admin.heroSubtitle"></label>
+        <textarea id="heroSubtitleInput" rows="2"></textarea>
+      </div>
+      <div class="admin-row">
+        <label for="servicesDescInput" data-content-key="admin.servicesDesc"></label>
+        <textarea id="servicesDescInput" rows="2"></textarea>
+      </div>
+      <div class="admin-row">
+        <label for="casesDescInput" data-content-key="admin.casesDesc"></label>
+        <textarea id="casesDescInput" rows="2"></textarea>
+      </div>
+      <div class="admin-row">
+        <label for="contactDescInput" data-content-key="admin.contactDesc"></label>
+        <textarea id="contactDescInput" rows="2"></textarea>
+      </div>
+      <div class="admin-row">
+        <label for="serviceListInput" data-content-key="admin.serviceList"></label>
+        <textarea id="serviceListInput" rows="3"></textarea>
+        <p class="muted" data-content-key="admin.serviceHelp"></p>
+      </div>
+      <div class="admin-actions">
+        <button class="primary" id="saveContent" data-content-key="admin.save"></button>
+        <button class="secondary" id="resetContent" data-content-key="admin.reset"></button>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-row heading">
+        <div>
+          <p class="eyebrow" data-content-key="admin.statsEyebrow"></p>
+          <h4 data-content-key="admin.statsTitle"></h4>
+        </div>
+        <button class="secondary small" id="resetStats" data-content-key="admin.resetStats"></button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="label" data-content-key="admin.total"></p>
+          <strong id="totalVisits">0</strong>
+        </div>
+        <div class="stat-card">
+          <p class="label" data-content-key="admin.today"></p>
+          <strong id="todayVisits">0</strong>
+        </div>
+        <div class="stat-card">
+          <p class="label" data-content-key="admin.last"></p>
+          <strong id="lastVisit">—</strong>
+        </div>
+      </div>
+      <div class="chart" id="chart"></div>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
