@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tinery • QA студия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo">Tinery.</div>
+        <nav>
+            {% if session.get('user_id') %}
+                <span class="welcome">Привет, {{ session.get('username') }}!</span>
+                <a href="{{ url_for('dashboard') }}">Задачи</a>
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('manage_users') }}">Админ панель</a>
+                {% endif %}
+                <a class="button ghost" href="{{ url_for('logout') }}">Выйти</a>
+            {% else %}
+                <a class="button" href="{{ url_for('login') }}">Войти</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main class="page">{% block content %}{% endblock %}</main>
+    <footer class="footer">Tiny fixes. Big impact.</footer>
+</body>
+</html>
