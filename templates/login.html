@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <p class="eyebrow">Tinery</p>
+        <h1>Refine your product.</h1>
+        <p class="lead">Студия качества, которая специализируется на UI/UX, API и e2e тестировании. Войдите, чтобы контролировать фокус тестов и задачи команды.</p>
+    </div>
+    <form method="post" class="panel">
+        <h2>Вход в студию</h2>
+        <label>
+            Логин
+            <input type="text" name="username" required>
+        </label>
+        <label>
+            Пароль
+            <input type="password" name="password" required>
+        </label>
+        <button type="submit" class="button primary">Войти</button>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </form>
+</section>
+{% endblock %}

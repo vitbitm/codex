@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="grid">
+    <div class="panel">
+        <div class="panel-header">
+            <div>
+                <p class="eyebrow">Рабочий стол</p>
+                <h2>Задачи команды</h2>
+            </div>
+            <div class="pill">Доступ: {{ 'Admin' if is_admin else 'Member' }}</div>
+        </div>
+        <div class="tasks">
+            {% if tasks %}
+                {% for task in tasks %}
+                <article class="task-card">
+                    <div class="task-meta">
+                        <span class="status {{ task['status']|lower().replace(' ', '-') }}">{{ task['status'] }}</span>
+                        {% if task['assignee'] %}
+                            <span class="assignee">→ {{ task['assignee'] }}</span>
+                        {% else %}
+                            <span class="assignee">Не назначено</span>
+                        {% endif %}
+                        <span class="timestamp">{{ task['created_at'][:10] }}</span>
+                    </div>
+                    <h3>{{ task['title'] }}</h3>
+                    <p>{{ task['description'] }}</p>
+                    <form method="post" action="{{ url_for('update_task_status', task_id=task['id']) }}" class="inline-form">
+                        <label>Статус
+                            <select name="status">
+                                {% for status in ['Pending', 'In Progress', 'Done'] %}
+                                    <option value="{{ status }}" {% if status == task['status'] %}selected{% endif %}>{{ status }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <button type="submit" class="button ghost">Обновить</button>
+                    </form>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="empty">Пока нет задач. Создайте первую, чтобы сфокусировать тестирование.</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="panel sticky">
+        <div class="panel-header">
+            <p class="eyebrow">Новая задача</p>
+            <h2>Tiny fixes. Big impact.</h2>
+        </div>
+        <form method="post" action="{{ url_for('create_task') }}" class="stack">
+            <label>Заголовок
+                <input type="text" name="title" required placeholder="Проверить UX потока онбординга">
+            </label>
+            <label>Описание
+                <textarea name="description" rows="3" placeholder="Описать шаги, окружение и ожидаемый результат"></textarea>
+            </label>
+            <label>Назначить
+                <select name="assignee_id">
+                    <option value="">Не выбрано</option>
+                    {% for teammate in teammates %}
+                        <option value="{{ teammate['id'] }}">{{ teammate['username'] }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Статус
+                <select name="status">
+                    {% for status in ['Pending', 'In Progress', 'Done'] %}
+                        <option value="{{ status }}">{{ status }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <button type="submit" class="button primary full">Создать</button>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash">
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+</section>
+{% endblock %}

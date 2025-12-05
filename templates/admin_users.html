@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="grid single">
+    <div class="panel">
+        <div class="panel-header">
+            <div>
+                <p class="eyebrow">Администрирование</p>
+                <h2>Пользователи</h2>
+            </div>
+            <div class="pill">Безопасность</div>
+        </div>
+        <div class="two-column">
+            <form method="post" class="stack">
+                <label>Имя пользователя
+                    <input type="text" name="username" required placeholder="qa.lead">
+                </label>
+                <label>Пароль
+                    <input type="password" name="password" required>
+                </label>
+                <label>Роль
+                    <select name="role">
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </label>
+                <button type="submit" class="button primary">Добавить</button>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash">
+                        {% for category, message in messages %}
+                            <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </form>
+            <div class="user-list">
+                {% for user in users %}
+                    <div class="user-card">
+                        <div>
+                            <p class="label">{{ user['role']|capitalize }}</p>
+                            <h3>{{ user['username'] }}</h3>
+                        </div>
+                        <span class="pill light">ID {{ user['id'] }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
